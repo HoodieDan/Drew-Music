@@ -1,0 +1,49 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add global @vue-cli-plugin-tailwind
+
+PATH: 
+  C:\Users\OSEMU\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\TDM-GCC-64\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Users\OSEMU\AppData\Local\Microsoft\WindowsApps;C:\Users\OSEMU\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\MongoDB\Server\4.2\bin;C:\Users\OSEMU\.dotnet\tools;C:\Users\OSEMU\AppData\Local\atom\bin;C:\Users\OSEMU\AppData\Local\Programs\Hyper\resources\bin;C:\Users\OSEMU\AppData\Roaming\npm;C:\Users\OSEMU\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.14.2
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@vue-cli-plugin-tailwind: Request "https://registry.yarnpkg.com/@vue-cli-plugin-tailwind" returned a 405
+      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66154:18)
+      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140890:22)
+      at Request.emit (node:events:526:28)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141862:10)
+      at Request.emit (node:events:526:28)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141784:12)
+      at Object.onceWrapper (node:events:645:28)
+      at IncomingMessage.emit (node:events:538:35)
+      at endReadableNT (node:internal/streams/readable:1345:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+    "name": "music",
+    "version": "0.1.0",
+    "private": true,
+    "devDependencies": {
+      "@vue/cli-plugin-babel": "~5.0.0",
+      "@vue/cli-plugin-router": "~5.0.0",
+      "@vue/cli-plugin-vuex": "~5.0.0",
+      "@vue/cli-plugin-eslint": "~5.0.0",
+      "@vue/cli-plugin-unit-jest": "~5.0.0",
+      "@vue/cli-plugin-e2e-cypress": "~5.0.0",
+      "@vue/cli-service": "~5.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
