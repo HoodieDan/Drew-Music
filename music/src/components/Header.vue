@@ -3,12 +3,17 @@
   <header id="header">
     <nav class="container mx-auto flex justify-start items-center py-5 px-4">
       <!-- App Name -->
-      <a class="drew-music text-white font-bold uppercase text-2xl mr-4" href="#">Drew Music</a>
+      <router-link to="/" class="drew-music text-white font-bold uppercase text-2xl mr-4" href="#">
+        Drew Music
+      </router-link>
 
       <div class="flex flex-grow items-center primary-nav">
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
+          <li>
+            <router-link to="/about" class="px-2 text-white" href="#">About</router-link>
+          </li>
           <li v-if="!userLoggedIn">
             <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal">
             Login / Register
@@ -16,7 +21,7 @@
           </li>
           <template v-else>
             <li>
-              <a class="px-2 text-white" href="#">Manage</a>
+              <router-link to="/manage" class="px-2 text-white" href="#">Manage</router-link>
             </li>
             <li>
               <a class="px-2 text-white" href="#" @click.prevent="signOut">Logout</a>
@@ -35,7 +40,11 @@ export default {
   name: 'HeaderComp',
   methods: {
     ...mapMutations(['toggleAuthModal']),
-    ...mapActions(['signOut']),
+    signOut () {
+      this.$store.dispatch('signOut')
+
+      window.location.reload();
+    }
   },
   computed: {
     ...mapState(['userLoggedIn'])
