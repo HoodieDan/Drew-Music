@@ -1,5 +1,7 @@
 import { createStore } from 'vuex';
-import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import {
+  getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut, onAuthStateChanged,
+} from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
 import { db } from '@/includes/firebase';
 
@@ -23,7 +25,7 @@ export default createStore({
     },
     loggedOut(state) {
 
-    }
+    },
   },
   getters: {
     // authModalShow: (state) => state.authModalShow,
@@ -45,7 +47,7 @@ export default createStore({
 
       updateProfile(user, {
         displayName: payload.name,
-      })
+      });
 
       commit('toggleAuth');
     },
@@ -54,17 +56,17 @@ export default createStore({
         if (user) {
           commit('toggleAuth');
         }
-      })
+      });
     },
     async login({ commit }, payload) {
       await signInWithEmailAndPassword(auth, payload.email, payload.password);
-      
+
       commit('toggleAuth');
     },
     async signOut({ commit }) {
       await auth.signOut();
 
-      commit('toggleAuth')
-    }
+      commit('toggleAuth');
+    },
   },
 });

@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import AppHeader from './components/Header.vue';
-import AuthModal from './components/Auth.vue';
 import { mapState } from 'vuex';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
+import AppHeader from './components/Header.vue';
+import AuthModal from './components/Auth.vue';
 
 export default {
   name: 'App',
@@ -26,7 +26,7 @@ export default {
         this.$store.dispatch('init_login');
       }
     });
-  }
+  },
 };
 </script>
 

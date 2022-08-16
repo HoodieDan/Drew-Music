@@ -55,7 +55,7 @@ export default {
       this.login_alert_variant = 'bg-blue-500';
       this.login_alert_message = 'Please wait! We are logging you in.';
       try {
-        await this.$store.dispatch('login', values)
+        await this.$store.dispatch('login', values);
       } catch (error) {
         this.login_in_submission = false;
         this.login_alert_variant = 'bg-red-500';

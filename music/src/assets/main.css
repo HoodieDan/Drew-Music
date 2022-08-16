@@ -1,5 +1,16 @@
+.abril {
+  font-family: "Noto Sans Display", sans-serif;
+  letter-spacing: 0.5;
+}
+.head-font {
+  font-family: "Oleo Script Swash Caps", cursive;
+}
 a {
   transition: all 0.15s ease;
+}
+
+.bg-green-400 {
+  background-color: #0bce5a !important;
 }
 
 .bg-dark {
@@ -62,6 +73,10 @@ section.main-header-content {
   background-color: #20d862;
   border-color: #20d862;
   border-style: solid;
+}
+
+.text-green {
+  color: #0bce5a !important;
 }
 
 input[type="file"]{
