@@ -8,7 +8,7 @@
     <!-- Name -->
     <div class="mb-3">
         <label for="name" class="inline-block mb-2">Name</label>
-        <vee-field as="input" type="text" id="name"
+        <vee-field as="input" type="text" name="name"
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
             duration-500 focus:outline-none focus:border-black rounded"
         placeholder="Enter Name" />
@@ -17,7 +17,7 @@
     <!-- Email -->
     <div class="mb-3">
         <label for="email" class="inline-block mb-2">Email</label>
-        <vee-field as="input" type="email" id="email"
+        <vee-field as="input" type="email" name="email"
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
             duration-500 focus:outline-none focus:border-black rounded"
         placeholder="Enter Email" />
@@ -26,7 +26,7 @@
     <!-- Age -->
     <div class="mb-3">
         <label for="age" class="inline-block mb-2">Age</label>
-        <vee-field type="number" id="age"
+        <vee-field type="number" name="age"
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
             duration-500 focus:outline-none focus:border-black rounded" />
         <ErrorMessage class="text-red-600" name="age"></ErrorMessage>
