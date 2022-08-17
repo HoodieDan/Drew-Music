@@ -136,7 +136,10 @@
 
 <script>
 export default {
-
+  name: 'manage',
+  beforeRouteEnter(to, from, next) {
+    
+  }
 };
 </script>
 

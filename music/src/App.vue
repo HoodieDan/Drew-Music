@@ -2,6 +2,7 @@
   <app-header></app-header>
   <router-view />
   <auth-modal></auth-modal>
+  <player />
 </template>
 
 <script>
@@ -9,12 +10,14 @@ import { mapState } from 'vuex';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import AppHeader from './components/Header.vue';
 import AuthModal from './components/Auth.vue';
+import Player from './components/Player.vue';
 
 export default {
   name: 'App',
   components: {
     AppHeader,
     AuthModal,
+    Player,
   },
   computed: {
     ...mapState(['userLoggedIn']),
