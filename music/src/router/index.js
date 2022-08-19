@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import store from '@/store'
 
 const routes = [
   {
@@ -14,6 +15,9 @@ const routes = [
   {
     path: '/manage',
     alias: '/manage-music',
+    meta: {
+      requiresAuth: true
+    },
     name: 'manage',
     component: () => import('../views/ManageView.vue'),
   },
@@ -27,5 +31,18 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  if (!to.matched.some((record) => record.meta.requiresAuth)) {
+    next();
+    return;
+  } 
+
+  if (store.state.userLoggedIn) {
+    next();
+  } else {
+    next({ name: 'home' });
+  }
+})
 
 export default router;

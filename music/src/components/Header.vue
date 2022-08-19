@@ -43,7 +43,9 @@ export default {
     signOut() {
       this.$store.dispatch('signOut');
 
-      this.$router.push({ name: 'home' })
+      if (this.$route.meta.requiresAuth) {
+        this.$router.push({ name: 'home' })
+      }
     },
   },
   computed: {

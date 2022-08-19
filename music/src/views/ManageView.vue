@@ -139,13 +139,13 @@ import store from '@/store';
 
 export default {
   name: 'manage',
-  beforeRouteEnter(to, from, next) {
-    if (store.state.userLoggedIn) {
-      next();
-    } else {
-      next({ name: 'home' });
-    }
-  },
+  // beforeRouteEnter(to, from, next) {
+  //   if (store.state.userLoggedIn) {
+  //     next();
+  //   } else {
+  //     next({ name: 'home' });
+  //   }
+  // },
 };
 </script>
 
