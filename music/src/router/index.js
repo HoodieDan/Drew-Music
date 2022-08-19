@@ -16,23 +16,16 @@ const routes = [
     alias: '/manage-music',
     name: 'manage',
     component: () => import('../views/ManageView.vue'),
-    beforeEnter: (to, from, next) => {
-      
-    }
   },
   {
     path: '/:catchAll(.*)*',
-    redirect: { name: 'home' }
-  }
+    redirect: { name: 'home' },
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-});
-
-router.beforeEach((to, from, next) => {
-
 });
 
 export default router;

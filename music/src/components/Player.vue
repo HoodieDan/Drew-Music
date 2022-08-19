@@ -38,7 +38,7 @@
 </template>
 
 <script>
-    export default {
-        name: "Player",
-    }
+export default {
+  name: 'Player',
+};
 </script>

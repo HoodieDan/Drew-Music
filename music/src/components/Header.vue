@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapState } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
 
 export default {
   name: 'HeaderComp',
@@ -43,7 +43,7 @@ export default {
     signOut() {
       this.$store.dispatch('signOut');
 
-      window.location.reload();
+      this.$router.push({ name: 'home' })
     },
   },
   computed: {
