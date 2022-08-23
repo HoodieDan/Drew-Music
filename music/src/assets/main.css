@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 .abril {
   font-family: "Noto Sans Display", sans-serif;
   letter-spacing: 0.5;

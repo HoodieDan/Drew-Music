@@ -47,6 +47,9 @@
 </template>
 
 <script>
+import { storage } from '@/includes/firebase'
+import { ref, uploadBytes } from 'firebase/storage'
+
 export default {
     name: 'Upload',
     data () {
@@ -64,8 +67,14 @@ export default {
                 if (file.type !== 'audio/mpeg') {
                     return;
                 }
+                console.log(file)
+                const storageRef = ref(storage, `songs/${file.name}`)
+                // const songsRef = storageRef.child(`songs/${file.name}`)
+                // songsRef.put(file)
+                uploadBytes(storageRef, file) .then((snapshot) => {
+                    console.log(snapshot)
+                })
             })
-            console.log($event)
         }
     }
 }
