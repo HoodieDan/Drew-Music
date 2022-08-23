@@ -33,6 +33,7 @@
                 :style="{ width: upload.current_progress + '%' }"
                 :class="upload.variant"></div>
             </div>
+            <p class="text-red-400" v-if="upload.error_message">{{ upload.error_message }}</p>
         </div>
     </div>
   </div>
@@ -70,11 +71,24 @@ export default {
                     name: file.name,
                     variant: 'bg-blue-400',
                     icon: 'fas fa-spinner fa-spin',
-                    text_class: ''
+                    text_class: '',
+                    error_message: ''
                 }) - 1;
                 task.on('state_changed', (snapshot) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     this.uploads[uploadIndex].current_progress = progress;
+                }, (error) => {
+                    this.uploads[uploadIndex].variant = 'bg-red-400';
+                    this.uploads[uploadIndex].icon = 'fas fa-times';
+                    this.uploads[uploadIndex].text_class = 'text-red-400';
+                    if (error.code === 'storage/unauthorized') {
+                        this.uploads[uploadIndex].error_message = 'Please upload file less than 10mb.'
+                    }
+                    console.log(error.code);
+                }, () => {
+                    this.uploads[uploadIndex].variant = 'bg-green-400';
+                    this.uploads[uploadIndex].icon = 'fas fa-check';
+                    this.uploads[uploadIndex].text_class = 'text-green-400';
                 });
             })
         }
