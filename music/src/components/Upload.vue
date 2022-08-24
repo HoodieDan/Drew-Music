@@ -40,8 +40,10 @@
 </template>
 
 <script>
-import { storage } from '@/includes/firebase'
-import { ref, uploadBytesResumable } from 'firebase/storage'
+import { storage, db } from '@/includes/firebase'
+import { addDoc, collection } from '@firebase/firestore';
+import { getAuth, onAuthStateChanged } from '@firebase/auth';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 
 export default {
     name: 'Upload',
@@ -61,7 +63,7 @@ export default {
                 if (file.type !== 'audio/mpeg') {
                     return;
                 }
-                console.log(file)
+                // console.log(file)
                 const storageRef = ref(storage, `songs/${file.name}`)
                 
                 const task = uploadBytesResumable(storageRef, file)
@@ -85,7 +87,27 @@ export default {
                         this.uploads[uploadIndex].error_message = 'Please upload file less than 10mb.'
                     }
                     console.log(error.code);
-                }, () => {
+                }, async () => {
+                    const auth = getAuth();
+                    onAuthStateChanged(auth, async (user) => {
+                        let song = {
+                            uid: user.uid,
+                            display_name: user.displayName,
+                            original_name: task.snapshot.ref.name,
+                            modified_name: task.snapshot.ref.name,
+                            genre: '',
+                            comment_count: 0,
+                            url: '',
+                        }
+
+                        getDownloadURL(task.snapshot.ref).then((downloadURL) => {
+                            song.url = downloadURL
+                        })
+                        console.log(song);
+                        await addDoc(collection(db, 'songs'), song);
+                            // console.log(user)
+                        });
+
                     this.uploads[uploadIndex].variant = 'bg-green-400';
                     this.uploads[uploadIndex].icon = 'fas fa-check';
                     this.uploads[uploadIndex].text_class = 'text-green-400';

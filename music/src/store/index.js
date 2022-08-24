@@ -45,8 +45,14 @@ export default createStore({
         country: payload.country,
       });
 
-      updateProfile(user, {
-        displayName: payload.name,
+      onAuthStateChanged(auth, (user) => {
+        updateProfile(user, {
+          displayName: payload.name,
+        }).then(() => {
+          console.log('Profile Updated');
+        }).catch((error) => {
+          console.log(error.code);
+        })
       });
 
       commit('toggleAuth');
