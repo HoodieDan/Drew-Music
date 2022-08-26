@@ -30,7 +30,7 @@
             </div>
             <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
             <!-- Inner Progress Bar -->
-            <div class="transition-all progress-bar bg-blue-400" 
+            <div class="transition-all progress-bar bg-blue-400"
                 :style="{ width: upload.current_progress + '%' }"
                 :class="upload.variant"></div>
             </div>
@@ -41,82 +41,89 @@
 </template>
 
 <script>
-import { storage, db } from '@/includes/firebase'
+import { storage, db } from '@/includes/firebase';
 import { addDoc, collection } from '@firebase/firestore';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 
 export default {
-    name: 'Upload',
-    data () {
-        return {
-            isDraggedOver: false,
-            uploads: [],
+  name: 'Upload',
+  data() {
+    return {
+      isDraggedOver: false,
+      uploads: [],
+    };
+  },
+  props: ['addSong'],
+  methods: {
+    upload($event) {
+      this.isDraggedOver = false;
+
+      const files = $event.dataTransfer ? [...$event.dataTransfer.files] : [...$event.target.files];
+
+      files.forEach((file) => {
+        if (file.type !== 'audio/mpeg') {
+          return;
         }
+        // console.log(file)
+        const storageRef = ref(storage, `songs/${file.name}`);
+
+        const task = uploadBytesResumable(storageRef, file);
+        const uploadIndex = this.uploads.push({
+          task,
+          current_progress: 0,
+          name: file.name,
+          variant: 'bg-blue-400',
+          icon: 'fas fa-spinner fa-spin',
+          text_class: '',
+          error_message: '',
+        }) - 1;
+        task.on('state_changed', (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          this.uploads[uploadIndex].current_progress = progress;
+        }, (error) => {
+          this.uploads[uploadIndex].variant = 'bg-red-400';
+          this.uploads[uploadIndex].icon = 'fas fa-times';
+          this.uploads[uploadIndex].text_class = 'text-red-400';
+          if (error.code === 'storage/unauthorized') {
+            this.uploads[uploadIndex].error_message = 'Please upload file less than 10mb.';
+          }
+          console.log(error.code);
+        }, async () => {
+          const auth = getAuth();
+          onAuthStateChanged(auth, async (user) => {
+            const song = {
+              uid: user.uid,
+              display_name: user.displayName,
+              original_name: task.snapshot.ref.name,
+              modified_name: task.snapshot.ref.name,
+              genre: '',
+              comment_count: 0,
+              url: '',
+            };
+
+            getDownloadURL(task.snapshot.ref).then((downloadURL) => {
+              song.url = downloadURL;
+            });
+            console.log(song);
+            await addDoc(collection(db, 'songs'), song);
+            // console.log(user)
+            this.addSong()
+          });
+
+          this.uploads[uploadIndex].variant = 'bg-green-400';
+          this.uploads[uploadIndex].icon = 'fas fa-check';
+          this.uploads[uploadIndex].text_class = 'text-green-400';
+        });
+      });
     },
-    methods: {
-        upload($event) {
-            this.isDraggedOver = false;
-
-            const files = $event.dataTransfer? [...$event.dataTransfer.files] : [...$event.target.files]
-
-            files.forEach((file) => {
-                if (file.type !== 'audio/mpeg') {
-                    return;
-                }
-                // console.log(file)
-                const storageRef = ref(storage, `songs/${file.name}`)
-                
-                const task = uploadBytesResumable(storageRef, file)
-                const uploadIndex = this.uploads.push({
-                    task,
-                    current_progress: 0,
-                    name: file.name,
-                    variant: 'bg-blue-400',
-                    icon: 'fas fa-spinner fa-spin',
-                    text_class: '',
-                    error_message: ''
-                }) - 1;
-                task.on('state_changed', (snapshot) => {
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    this.uploads[uploadIndex].current_progress = progress;
-                }, (error) => {
-                    this.uploads[uploadIndex].variant = 'bg-red-400';
-                    this.uploads[uploadIndex].icon = 'fas fa-times';
-                    this.uploads[uploadIndex].text_class = 'text-red-400';
-                    if (error.code === 'storage/unauthorized') {
-                        this.uploads[uploadIndex].error_message = 'Please upload file less than 10mb.'
-                    }
-                    console.log(error.code);
-                }, async () => {
-                    const auth = getAuth();
-                    onAuthStateChanged(auth, async (user) => {
-                        let song = {
-                            uid: user.uid,
-                            display_name: user.displayName,
-                            original_name: task.snapshot.ref.name,
-                            modified_name: task.snapshot.ref.name,
-                            genre: '',
-                            comment_count: 0,
-                            url: '',
-                        }
-
-                        getDownloadURL(task.snapshot.ref).then((downloadURL) => {
-                            song.url = downloadURL
-                        })
-                        console.log(song);
-                        await addDoc(collection(db, 'songs'), song);
-                            // console.log(user)
-                        });
-
-                    this.uploads[uploadIndex].variant = 'bg-green-400';
-                    this.uploads[uploadIndex].icon = 'fas fa-check';
-                    this.uploads[uploadIndex].text_class = 'text-green-400';
-                });
-            })
-        }
-    }
-}
+    cancelUploads() {
+      this.uploads.forEach((upload) => {
+        upload.task.cancel();
+      });
+    },
+  },
+};
 </script>
 
 <style>

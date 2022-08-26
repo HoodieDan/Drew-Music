@@ -42,8 +42,8 @@ export default {
     ...mapMutations(['toggleAuthModal']),
     signOut() {
       this.$store.dispatch('signOut', {
-      router: this.$router,
-      route: this.$route
+        router: this.$router,
+        route: this.$route,
       });
 
       // if (this.$route.meta.requiresAuth) {

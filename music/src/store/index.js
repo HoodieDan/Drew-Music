@@ -52,7 +52,7 @@ export default createStore({
           console.log('Profile Updated');
         }).catch((error) => {
           console.log(error.code);
-        })
+        });
       });
 
       commit('toggleAuth');
@@ -75,7 +75,8 @@ export default createStore({
       commit('toggleAuth');
 
       if (payload.route.meta.requiresAuth) {
-        payload.router.push({ name: 'home' })
-      }    },
+        payload.router.push({ name: 'home' });
+      }
+    },
   },
 });
