@@ -3,13 +3,13 @@
         duration-300">
     <div>
         <a href="#" class="font-bold block text-blue-600">{{ song.modified_name }}</a>
-        <span class="text-white-500 text-sm">Artist Name</span>
+        <span class="text-white-500 text-sm">{{ song.display_name }}</span>
     </div>
 
     <div class="text-blue-600 text-lg">
         <span class="comments">
             <i class="fa fa-comments text-blue-600"></i>
-            15
+            {{ song.comment_count }}
         </span>
     </div>
   </li>
