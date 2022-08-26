@@ -24,6 +24,7 @@
                         transition duration-500 focus:outline-none focus:border-black rounded"
                         placeholder="Enter Song Title"
                         v-model="song.modified_name"
+                        @input="updateUnsavedFlag(true)"
                         name="song_name" />
                     <ErrorMessage class="text-red-600" name="song_name" />
                 </div>
@@ -34,6 +35,7 @@
                         transition duration-500 focus:outline-none focus:border-black rounded"
                         placeholder="Enter Genre"
                         v-model="song.genre"
+                        @input="updateUnsavedFlag(true)"
                         name="song_genre" />
                     <ErrorMessage class="text-red-600" name="song_genre" />
                 </div>
@@ -78,6 +80,9 @@ export default {
     removeSong: {
       type: Function,
       required: true,
+    },
+    updateUnsavedFlag: {
+      type: Function,
     }
   },
   data() {
@@ -146,6 +151,7 @@ export default {
       }
 
       this.update(this.index, values);
+      this.updateUnsavedFlag(false);
 
       this.in_submission = false;
       this.show_alert = true;

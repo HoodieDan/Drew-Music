@@ -18,6 +18,7 @@
               :update="update"
               :index="i"
               :removeSong="removeSong"
+              :updateUnsavedFlag="updateUnsavedFlag"
             />
             <!-- Composition item ends here -->
           </div>
@@ -44,9 +45,8 @@ export default {
   },
   data() {
     return {
-      // editSong: false,
-      // editSongInfo: {},
       songs: [],
+      unsavedFlag: false,
     };
   },
   methods: {
@@ -72,13 +72,21 @@ export default {
     addSong() {
       this.songs = []
       this.getSongs()
+    },
+    updateUnsavedFlag(value) {
+      this.unsavedFlag = value;
     }
   },
   components: { Upload, CompositionItems },
   beforeRouteLeave(to, from, next) {
-    this.$refs.upload.cancelUploads();
-    next();
-  },
+    if (this.unsavedFlag === false) {
+      this.$refs.upload.cancelUploads();
+      next()
+    } else {
+      const leave = confirm('You have unsaved changes. Are you sure you want to leave?')
+      next(leave)
+    }
+  }
 };
 </script>
 
