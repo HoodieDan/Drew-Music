@@ -51,6 +51,7 @@ export default {
   data() {
     return {
       isDraggedOver: false,
+      songURL: '',
       uploads: [],
     };
   },
@@ -69,6 +70,9 @@ export default {
         const storageRef = ref(storage, `songs/${file.name}`);
 
         const task = uploadBytesResumable(storageRef, file);
+        // getDownloadURL(ref(storage, `songs/${file.name}`)).then((downloadURL) => {
+        //       this.songURL = downloadURL;
+        //   });
         const uploadIndex = this.uploads.push({
           task,
           current_progress: 0,
@@ -102,7 +106,7 @@ export default {
               url: '',
             };
 
-            getDownloadURL(task.snapshot.ref).then((downloadURL) => {
+            getDownloadURL(ref(storage, `songs/${file.name}`)).then((downloadURL) => {
               song.url = downloadURL;
             });
             console.log(song);

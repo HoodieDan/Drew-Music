@@ -26,191 +26,36 @@
       </div>
       <!-- Playlist -->
       <ol id="playlist">
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
-          duration-300">
-          <div>
-            <a href="#" class="font-bold block text-blue-600">Song Title</a>
-            <span class="text-white-500 text-sm">Artist Name</span>
-          </div>
-
-          <div class="text-blue-600 text-lg">
-            <span class="comments">
-              <i class="fa fa-comments text-blue-600"></i>
-              15
-            </span>
-          </div>
-        </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
-          duration-300">
-          <div>
-            <a href="#" class="font-bold block text-blue-600">Song Title</a>
-            <span class="text-white-500 text-sm">Artist Name</span>
-          </div>
-
-          <div class="text-blue-600 text-lg">
-            <span class="comments">
-              <i class="fa fa-comments text-blue-600"></i>
-              15
-            </span>
-          </div>
-        </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
-          duration-300">
-          <div>
-            <a href="#" class="font-bold block text-blue-600">Song Title</a>
-            <span class="text-white-500 text-sm">Artist Name</span>
-          </div>
-
-          <div class="text-blue-600 text-lg">
-            <span class="comments">
-              <i class="fa fa-comments text-blue-600"></i>
-              15
-            </span>
-          </div>
-        </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
-          duration-300">
-          <div>
-            <a href="#" class="font-bold block text-blue-600">Song Title</a>
-            <span class="text-white-500 text-sm">Artist Name</span>
-          </div>
-
-          <div class="text-blue-600 text-lg">
-            <span class="comments">
-              <i class="fa fa-comments text-blue-600"></i>
-              15
-            </span>
-          </div>
-        </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
-          duration-300">
-          <div>
-            <a href="#" class="font-bold block text-blue-600">Song Title</a>
-            <span class="text-white-500 text-sm">Artist Name</span>
-          </div>
-
-          <div class="text-blue-600 text-lg">
-            <span class="comments">
-              <i class="fa fa-comments text-blue-600"></i>
-              15
-            </span>
-          </div>
-        </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
-          duration-300">
-          <div>
-            <a href="#" class="font-bold block text-blue-600">Song Title</a>
-            <span class="text-white-500 text-sm">Artist Name</span>
-          </div>
-
-          <div class="text-blue-600 text-lg">
-            <span class="comments">
-              <i class="fa fa-comments text-blue-600"></i>
-              15
-            </span>
-          </div>
-        </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
-          duration-300">
-          <div>
-            <a href="#" class="font-bold block text-blue-600">Song Title</a>
-            <span class="text-white-500 text-sm">Artist Name</span>
-          </div>
-
-          <div class="text-blue-600 text-lg">
-            <span class="comments">
-              <i class="fa fa-comments text-blue-600"></i>
-              15
-            </span>
-          </div>
-        </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
-          duration-300">
-          <div>
-            <a href="#" class="font-bold block text-blue-600">Song Title</a>
-            <span class="text-white-500 text-sm">Artist Name</span>
-          </div>
-
-          <div class="text-blue-600 text-lg">
-            <span class="comments">
-              <i class="fa fa-comments text-blue-600"></i>
-              15
-            </span>
-          </div>
-        </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
-          duration-300">
-          <div>
-            <a href="#" class="font-bold block text-blue-600">Song Title</a>
-            <span class="text-white-500 text-sm">Artist Name</span>
-          </div>
-
-          <div class="text-blue-600 text-lg">
-            <span class="comments">
-              <i class="fa fa-comments text-blue-600"></i>
-              15
-            </span>
-          </div>
-        </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
-          duration-300">
-          <div>
-            <a href="#" class="font-bold block text-blue-600">Song Title</a>
-            <span class="text-white-500 text-sm">Artist Name</span>
-          </div>
-
-          <div class="text-blue-600 text-lg">
-            <span class="comments">
-              <i class="fa fa-comments text-blue-600"></i>
-              15
-            </span>
-          </div>
-        </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
-          duration-300">
-          <div>
-            <a href="#" class="font-bold block text-blue-600">Song Title</a>
-            <span class="text-white-500 text-sm">Artist Name</span>
-          </div>
-
-          <div class="text-blue-600 text-lg">
-            <span class="comments">
-              <i class="fa fa-comments text-blue-600"></i>
-              15
-            </span>
-          </div>
-        </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
-          duration-300">
-          <div>
-            <a href="#" class="font-bold block text-blue-600">Song Title</a>
-            <span class="text-white-500 text-sm">Artist Name</span>
-          </div>
-
-          <div class="text-blue-600 text-lg">
-            <span class="comments">
-              <i class="fa fa-comments text-blue-600"></i>
-              15
-            </span>
-          </div>
-        </li>
-        <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
-          duration-300">
-          <div>
-            <a href="#" class="font-bold block text-blue-600">Song Title</a>
-            <span class="text-white-500 text-sm">Artist Name</span>
-          </div>
-
-          <div class="text-blue-600 text-lg">
-            <span class="comments">
-              <i class="fa fa-comments text-blue-600"></i>
-              15
-            </span>
-          </div>
-        </li>
+        <SongItem v-for="song in songs" :key="song.docID" :song="song" />
       </ol>
       <!-- .. end Playlist -->
     </div>
   </section>
 
 </template>
+
+<script>
+import SongItem from "../components/SongItem.vue";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from '@/includes/firebase';
+
+  export default {
+    name: "HomeView",
+    data() {
+        return {
+            songs: []
+        };
+    },
+    async created() {
+        const snapshots = await getDocs(collection(db, "songs"));
+        snapshots.forEach((doc) => {
+            this.songs.push({
+                "docID": doc.id,
+                ...doc.data()
+            });
+            console.log(doc.id, " => ", doc.data());
+        });
+    },
+    components: { SongItem }
+}
+</script>
