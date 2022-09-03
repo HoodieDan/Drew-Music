@@ -19,7 +19,7 @@
   </section>
   <!-- Form -->
   <section class="container mx-auto mt-6">
-    <div class="bg-white rounded border border-gray-200 relative flex flex-col">
+    <div class="text-white rounded border border-gray-200 relative flex flex-col">
       <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
         <!-- Comment Count -->
         <span class="card-title">Comments (15)</span>
@@ -29,7 +29,7 @@
         <div class="text-white text-center font-bold p-4 mb-4" v-if="comment_show_alert" :class="comment_alert_variant">
           {{ comment_alert_message }}
         </div>
-        <vee-form :validation-schema="schema" @submit="addComment">
+        <vee-form :validation-schema="schema" @submit="addComment" v-if="userLoggedIn">
           <vee-field as="textarea" name="comment"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
               duration-500 focus:outline-none focus:border-black rounded mb-4"
@@ -127,8 +127,10 @@
 </template>
 
 <script>
-import { db } from '@/includes/firebase';
-import { doc, getDoc } from "firebase/firestore";
+import { db, commentsCollection } from '@/includes/firebase';
+import { onAuthStateChanged, getAuth } from '@firebase/auth';
+import { addDoc, doc, getDoc } from "firebase/firestore";
+import { mapState } from 'vuex';
 
 export default {
     name: 'SongView',
@@ -136,7 +138,7 @@ export default {
       return {
         song: {},
         schema: {
-          comment: 'required | min: 3'
+          comment: 'required|min:3'
         },
         comment_in_submission: false,
         comment_show_alert: false,
@@ -145,12 +147,34 @@ export default {
       }
     },
     methods: {
-      async addComment (values) {
+      addComment (values, {resetForm}) {
         this.comment_in_submission = true;
         this.comment_show_alert = true;
         this.comment_alert_variant = 'bg-blue-500';
-        this.comment_alert_message = 'Please Wait! Your comment is being submitted'
+        this.comment_alert_message = 'Please Wait! Your comment is being submitted';
+
+        const auth = getAuth();
+        onAuthStateChanged(auth, async (user) => {
+          const comment = {
+            content: values.comment,
+            datePosted: new Date().toString(),
+            sid: this.$route.params.id,
+            name: user.displayName,
+            uid: user.uid,
+          }
+
+          await addDoc(commentsCollection, comment);
+
+          this.comment_in_submission = false;
+          this.comment_alert_variant = 'bg-green-500';
+          this.comment_alert_message = 'Comment added!';
+
+          resetForm();
+        });
       }
+    },
+    computed: {
+      ...mapState(['userLoggedIn'])
     },
     async created () {
       const docRef = doc(db, 'songs', this.$route.params.id);
