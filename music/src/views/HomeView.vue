@@ -28,6 +28,7 @@
       <ol id="playlist">
         <SongItem v-for="song in songs" :key="song.docID" :song="song" />
       </ol>
+      <WaveLoader v-show="loading" />
       <!-- .. end Playlist -->
     </div>
   </section>
@@ -40,6 +41,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '@/includes/firebase';
 import SongItem from '../components/SongItem.vue';
+import WaveLoader from '@/components/WaveLoader.vue';
 
 export default {
   name: 'HomeView',
@@ -48,6 +50,7 @@ export default {
       songs: [],
       maxPerPage: 25,
       pendingRequest: false,
+      loading: true,
     };
   },
   async created() {
@@ -70,7 +73,6 @@ export default {
       if (this.songs.length) {
         const last = doc(db, 'songs', this.songs[this.songs.length - 1].docID);
         const lastDocument = await getDoc(last);
-        console.log(lastDocument.data());
         const q = query(
           collection(db, 'songs'),
           orderBy('modified_name'),
@@ -88,6 +90,9 @@ export default {
         );
 
         snapshots = await getDocs(q);
+      }
+      if (snapshots) {
+        this.loading = false
       }
       snapshots.forEach((doc) => {
         this.songs.push({
@@ -111,6 +116,6 @@ export default {
       }
     },
   },
-  components: { SongItem },
+  components: { SongItem, WaveLoader },
 };
 </script>
