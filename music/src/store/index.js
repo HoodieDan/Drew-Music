@@ -12,6 +12,7 @@ export default createStore({
   state: {
     authModalShow: false,
     userLoggedIn: false,
+    currentSong: {},
   },
   mutations: {
     toggleAuthModal: (state) => {
@@ -23,8 +24,8 @@ export default createStore({
     loggedIn(state) {
       state.userLoggedIn = true;
     },
-    loggedOut(state) {
-
+    newSong(state, payload) {
+      state.currentSong = payload;
     },
   },
   getters: {
@@ -78,5 +79,8 @@ export default createStore({
         payload.router.push({ name: 'home' });
       }
     },
+    async newSong({ commit }, payload) {
+      commit('newSong', payload);
+    }
   },
 });

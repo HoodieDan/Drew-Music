@@ -7,7 +7,7 @@
     <div class="container mx-auto flex items-center">
       <!-- Play/Pause Button -->
       <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full
-        focus:outline-none">
+        focus:outline-none" @click.prevent="newSong(song)">
         <i class="fas fa-play"></i>
       </button>
       <div class="z-50 text-left ml-8">
@@ -69,7 +69,7 @@ import { onAuthStateChanged, getAuth } from '@firebase/auth';
 import {
   addDoc, doc, getDoc, query, where, getDocs, updateDoc, increment,
 } from 'firebase/firestore';
-import { mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'SongView',
@@ -88,6 +88,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['newSong']),
     addComment(values, { resetForm }) {
       this.comment_in_submission = true;
       this.comment_show_alert = true;
