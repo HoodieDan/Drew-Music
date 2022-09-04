@@ -153,6 +153,15 @@ export default {
 
     this.getComments();
   },
+  watch: {
+    sort(newVal) {
+      this.$router.push({
+        query: {
+          sort: newVal,
+        }
+      })
+    }
+  }
 };
 </script>
 
