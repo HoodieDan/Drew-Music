@@ -22,7 +22,7 @@
     <div class="text-white rounded border border-gray-200 relative flex flex-col">
       <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
         <!-- Comment Count -->
-        <span class="card-title">Comments (15)</span>
+        <span class="card-title">Comments ({{ song.comment_count }})</span>
         <i class="fa fa-comments float-right text-green-400 text-2xl"></i>
       </div>
       <div class="p-6">
@@ -67,7 +67,7 @@
 import { db, commentsCollection } from '@/includes/firebase';
 import { onAuthStateChanged, getAuth } from '@firebase/auth';
 import {
-  addDoc, doc, getDoc, query, where, getDocs,
+  addDoc, doc, getDoc, query, where, getDocs, updateDoc, increment,
 } from 'firebase/firestore';
 import { mapState } from 'vuex';
 
@@ -106,6 +106,11 @@ export default {
 
         await addDoc(commentsCollection, comment);
 
+        // this.song.comment_count += 1;
+        await updateDoc(doc(db, 'songs', this.$route.params.id), {
+          comment_count: increment(1),
+        })
+
         this.getComments();
 
         this.comment_in_submission = false;
@@ -116,6 +121,7 @@ export default {
       });
     },
     async getComments() {
+      this.comments = []
       const q = query(commentsCollection, where('sid', '==', this.$route.params.id));
 
       const snapshot = await getDocs(q);
