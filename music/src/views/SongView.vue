@@ -107,7 +107,7 @@ export default {
 
         await addDoc(commentsCollection, comment);
 
-        // this.song.comment_count += 1;
+        this.song.comment_count += 1;
         await updateDoc(doc(db, 'songs', this.$route.params.id), {
           comment_count: increment(1),
         })
