@@ -11,7 +11,7 @@
       </div>
       <!-- Current Position -->
       <div class="float-left w-7 h-7 leading-3 text-white-400 mt-0 text-lg w-14 ml-5 mt-1">
-        <span class="player-currenttime text-white">00:00</span>
+        <span class="player-currenttime text-white">{{ seek }}</span>
       </div>
       <!-- Scrub -->
       <div class="song-container float-left w-7 h-7 leading-3 ml-7 mt-2 player-scrub">
@@ -32,7 +32,7 @@
       </div>
       <!-- Duration -->
       <div class="float-left w-7 h-7 leading-3  text-white mt-0 text-lg w-14 song-duration mt-1">
-        <span class="player-duration">03:06</span>
+        <span class="player-duration">{{ duration }}</span>
       </div>
     </div>
   </div>
@@ -46,7 +46,8 @@ export default {
     ...mapActions(['toggleAudio'])
   },
   computed: {
-    ...mapGetters(['playing'])
+    ...mapGetters(['playing']),
+    ...mapState(['seek', 'duration', 'song'])
   }
 };
 </script>
