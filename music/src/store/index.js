@@ -5,6 +5,7 @@ import {
 import { setDoc, doc } from 'firebase/firestore';
 import { db } from '@/includes/firebase';
 import { Howl } from 'howler';
+import helper from '@/includes/helper';
 
 const auth = getAuth();
 const user = auth.currentUser;
@@ -36,8 +37,8 @@ export default createStore({
       });
     },
     updatePosition(state) {
-      state.seek = state.sound.seek();
-      state.duration = state.sound.duration();
+      state.seek = helper.formatTime(state.sound.seek());
+      state.duration = helper.formatTime(state.sound.duration());
     }
   },
   getters: {
