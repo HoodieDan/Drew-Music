@@ -67,26 +67,26 @@ export default {
       this.songs[i].genre = values.song_genre;
     },
     removeSong(i) {
-      this.songs.splice(i, 1)
+      this.songs.splice(i, 1);
     },
     addSong() {
-      this.songs = []
-      this.getSongs()
+      this.songs = [];
+      this.getSongs();
     },
     updateUnsavedFlag(value) {
       this.unsavedFlag = value;
-    }
+    },
   },
   components: { Upload, CompositionItems },
   beforeRouteLeave(to, from, next) {
     if (this.unsavedFlag === false) {
       this.$refs.upload.cancelUploads();
-      next()
+      next();
     } else {
-      const leave = confirm('You have unsaved changes. Are you sure you want to leave?')
-      next(leave)
+      const leave = confirm('You have unsaved changes. Are you sure you want to leave?');
+      next(leave);
     }
-  }
+  },
 };
 </script>
 

@@ -83,7 +83,7 @@ export default {
     },
     updateUnsavedFlag: {
       type: Function,
-    }
+    },
   },
   data() {
     return {
@@ -123,7 +123,7 @@ export default {
 
       await deleteObject(songRef).then(async () => {
         await deleteDoc(doc(db, 'songs', song.id));
-        this.removeSong(this.index)
+        this.removeSong(this.index);
         console.log('song deleted');
       }).catch((error) => {
         console.error(error);

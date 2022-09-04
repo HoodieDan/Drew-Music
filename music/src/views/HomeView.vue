@@ -35,23 +35,25 @@
 </template>
 
 <script>
-import SongItem from "../components/SongItem.vue";
-import { collection, getDocs, doc, orderBy, limit, query, startAfter, getDoc, startAt } from "firebase/firestore";
+import {
+  collection, getDocs, doc, orderBy, limit, query, startAfter, getDoc, startAt,
+} from 'firebase/firestore';
 import { db } from '@/includes/firebase';
+import SongItem from '../components/SongItem.vue';
 
 export default {
-  name: "HomeView",
+  name: 'HomeView',
   data() {
     return {
-        songs: [],
-        maxPerPage: 3,
-        pendingRequest: false,
+      songs: [],
+      maxPerPage: 3,
+      pendingRequest: false,
     };
   },
   async created() {
     this.getSongs();
 
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll);
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -66,29 +68,33 @@ export default {
       let snapshots;
       let lastDocument;
       if (this.songs.length) {
-        const last = doc(db, "songs", this.songs[this.songs.length - 1].docID);
-        const lastDocument = await getDoc(last)
-        console.log(lastDocument.data())
-        const q = query(collection(db, "songs"),
-        orderBy('modified_name'),
-        // startAt(lastDocument),
-        startAfter(lastDocument),
-        limit(this.maxPerPage));
+        const last = doc(db, 'songs', this.songs[this.songs.length - 1].docID);
+        const lastDocument = await getDoc(last);
+        console.log(lastDocument.data());
+        const q = query(
+          collection(db, 'songs'),
+          orderBy('modified_name'),
+          // startAt(lastDocument),
+          startAfter(lastDocument),
+          limit(this.maxPerPage),
+        );
 
         snapshots = await getDocs(q);
       } else {
-        const q = query(collection(db, "songs"),
-        orderBy('modified_name'),
-        limit(this.maxPerPage));
+        const q = query(
+          collection(db, 'songs'),
+          orderBy('modified_name'),
+          limit(this.maxPerPage),
+        );
 
         snapshots = await getDocs(q);
       }
       snapshots.forEach((doc) => {
         this.songs.push({
-            "docID": doc.id,
-            ...doc.data()
+          docID: doc.id,
+          ...doc.data(),
         });
-        console.log(doc.id, " => ", doc.data());
+        console.log(doc.id, ' => ', doc.data());
       });
       // lastDocument = snapshots[snapshots.length - 1];
       // console.log(lastDocument)
@@ -100,11 +106,11 @@ export default {
       const bottomOfWindow = Math.round(scrollTop) + innerHeight === offsetHeight;
 
       if (bottomOfWindow) {
-        this.getSongs()
+        this.getSongs();
         console.log('bottom of window');
       }
-    }
+    },
   },
-  components: { SongItem }
-}
+  components: { SongItem },
+};
 </script>

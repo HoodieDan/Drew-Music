@@ -112,7 +112,7 @@ export default {
             console.log(song);
             await addDoc(collection(db, 'songs'), song);
             // console.log(user)
-            this.addSong()
+            this.addSong();
           });
 
           this.uploads[uploadIndex].variant = 'bg-green-400';

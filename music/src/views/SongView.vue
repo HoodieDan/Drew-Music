@@ -40,7 +40,7 @@
           </button>
         </vee-form>
         <!-- Sort Comments -->
-        <select
+        <select v-model="sort"
           class="block mt-4 py-1.5 px-3 text-gray-800 border border-gray-300 transition
           duration-500 focus:outline-none focus:border-black rounded">
           <option value="1">Latest</option>
@@ -51,7 +51,7 @@
   </section>
   <!-- Comments -->
   <ul class="container mx-auto">
-    <li class="p-6 text-white border border-gray-200" v-for="comment in comments" :key="comment.docID">
+    <li class="p-6 text-white border border-gray-200" v-for="comment in sortedComments" :key="comment.docID">
       <!-- Comment Author -->
       <div class="mb-5">
         <div class="font-bold">{{ comment.name }}</div>
@@ -60,87 +60,100 @@
 
       <p>-{{ comment.content }}</p>
     </li>
-  </ul> 
+  </ul>
 </template>
 
 <script>
 import { db, commentsCollection } from '@/includes/firebase';
 import { onAuthStateChanged, getAuth } from '@firebase/auth';
-import { addDoc, doc, getDoc, query, where, getDocs } from "firebase/firestore";
+import {
+  addDoc, doc, getDoc, query, where, getDocs,
+} from 'firebase/firestore';
 import { mapState } from 'vuex';
 
 export default {
-    name: 'SongView',
-    data () {
-      return {
-        song: {},
-        schema: {
-          comment: 'required|min:3'
-        },
-        comment_in_submission: false,
-        comment_show_alert: false,
-        comment_alert_variant: 'bg-blue-500',
-        comment_alert_message: 'Please wait! Your comment is being submitted.',
-        comments: [],
-      }
-    },
-    methods: {
-      addComment (values, {resetForm}) {
-        this.comment_in_submission = true;
-        this.comment_show_alert = true;
-        this.comment_alert_variant = 'bg-blue-500';
-        this.comment_alert_message = 'Please Wait! Your comment is being submitted';
-
-        const auth = getAuth();
-        onAuthStateChanged(auth, async (user) => {
-          const comment = {
-            content: values.comment,
-            datePosted: new Date().toString(),
-            sid: this.$route.params.id,
-            name: user.displayName,
-            uid: user.uid,
-          }
-
-          await addDoc(commentsCollection, comment);
-
-          this.comment_in_submission = false;
-          this.comment_alert_variant = 'bg-green-500';
-          this.comment_alert_message = 'Comment added!';
-
-          resetForm();
-        });
+  name: 'SongView',
+  data() {
+    return {
+      song: {},
+      schema: {
+        comment: 'required|min:3',
       },
-      async getComments () {
-        const q = query(commentsCollection, where('sid', '==', this.$route.params.id));
+      comment_in_submission: false,
+      comment_show_alert: false,
+      comment_alert_variant: 'bg-blue-500',
+      comment_alert_message: 'Please wait! Your comment is being submitted.',
+      comments: [],
+      sort: '1',
+    };
+  },
+  methods: {
+    addComment(values, { resetForm }) {
+      this.comment_in_submission = true;
+      this.comment_show_alert = true;
+      this.comment_alert_variant = 'bg-blue-500';
+      this.comment_alert_message = 'Please Wait! Your comment is being submitted';
 
-        const snapshot = await getDocs(q);
+      const auth = getAuth();
+      onAuthStateChanged(auth, async (user) => {
+        const comment = {
+          content: values.comment,
+          datePosted: new Date().toString(),
+          sid: this.$route.params.id,
+          name: user.displayName,
+          uid: user.uid,
+        };
 
-        this.comment = [];
-        snapshot.forEach((doc) => {
-          this.comments.push({ 
-            docID: doc.id,
-            ...doc.data() 
-          });
+        await addDoc(commentsCollection, comment);
+
+        this.getComments();
+
+        this.comment_in_submission = false;
+        this.comment_alert_variant = 'bg-green-500';
+        this.comment_alert_message = 'Comment added!';
+
+        resetForm();
+      });
+    },
+    async getComments() {
+      const q = query(commentsCollection, where('sid', '==', this.$route.params.id));
+
+      const snapshot = await getDocs(q);
+
+      this.comment = [];
+      snapshot.forEach((doc) => {
+        this.comments.push({
+          docID: doc.id,
+          ...doc.data(),
         });
-      },
+      });
     },
-    computed: {
-      ...mapState(['userLoggedIn'])
+  },
+  computed: {
+    ...mapState(['userLoggedIn']),
+    sortedComments() {
+      return this.comments.slice().sort((a, b) => {
+        if (this.sort === '1') {
+          return new Date(b.datePosted) - new Date(a.datePosted);
+        }
+
+        return new Date(a.datePosted) - new Date(b.datePosted);
+      });
     },
-    async created () {
-      const docRef = doc(db, 'songs', this.$route.params.id);
-      const docSnapshot = await getDoc(docRef);
+  },
+  async created() {
+    const docRef = doc(db, 'songs', this.$route.params.id);
+    const docSnapshot = await getDoc(docRef);
 
-      if(!docSnapshot.exists()) {
-        this.$router.push({ name: 'home' })
-        return;
-      } else {
-        this.song = docSnapshot.data();
-      }
-
-      this.getComments();
+    if (!docSnapshot.exists()) {
+      this.$router.push({ name: 'home' });
+      return;
     }
-}
+    this.song = docSnapshot.data();
+
+    this.getComments();
+  },
+};
 </script>
 
 <style>

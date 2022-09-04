@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import store from '@/store';
-import SongView from '@/views/SongView.vue'
+import SongView from '@/views/SongView.vue';
 
 const routes = [
   {
@@ -25,7 +25,7 @@ const routes = [
   {
     name: 'song',
     path: '/song/:id',
-    component: SongView
+    component: SongView,
   },
   {
     path: '/:catchAll(.*)*',
