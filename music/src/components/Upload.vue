@@ -95,7 +95,7 @@ export default {
           console.log(error.code);
         }, async () => {
           const auth = getAuth();
-          onAuthStateChanged(auth, async (user) => {
+          onAuthStateChanged(auth, (user) => {
             const song = {
               uid: user.uid,
               display_name: user.displayName,
@@ -106,11 +106,12 @@ export default {
               url: '',
             };
 
-            getDownloadURL(ref(storage, `songs/${file.name}`)).then((downloadURL) => {
+            getDownloadURL(ref(storage, `songs/${file.name}`)).then( async (downloadURL) => {
               song.url = downloadURL;
+
+              await addDoc(collection(db, 'songs'), song);
             });
             console.log(song);
-            await addDoc(collection(db, 'songs'), song);
             // console.log(user)
             this.addSong();
           });

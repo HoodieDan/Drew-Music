@@ -4,6 +4,7 @@ import {
 } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
 import { db } from '@/includes/firebase';
+import { Howl } from 'howler';
 
 const auth = getAuth();
 const user = auth.currentUser;
@@ -13,6 +14,7 @@ export default createStore({
     authModalShow: false,
     userLoggedIn: false,
     currentSong: {},
+    sound: {},
   },
   mutations: {
     toggleAuthModal: (state) => {
@@ -26,6 +28,10 @@ export default createStore({
     },
     newSong(state, payload) {
       state.currentSong = payload;
+      state.sound = new Howl({
+        src: [payload.url],
+        html5: true,
+      });
     },
   },
   getters: {
@@ -79,8 +85,10 @@ export default createStore({
         payload.router.push({ name: 'home' });
       }
     },
-    async newSong({ commit }, payload) {
+    async newSong({ commit, state }, payload) {
       commit('newSong', payload);
+
+      state.sound.play();
     }
   },
 });
