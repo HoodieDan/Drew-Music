@@ -22,8 +22,8 @@
 
 <script>
 export default {
-    name: 'WaveLoader',
-}
+  name: 'WaveLoader',
+};
 </script>
 
 <style scoped>
@@ -49,7 +49,7 @@ div.loader-container {
   margin: 0 2px;
   border-radius: 0.5rem;
 }
- 
+
 #loader span:nth-child(2){
     animation-delay: .15s;
 }

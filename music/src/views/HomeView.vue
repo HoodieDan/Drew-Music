@@ -40,8 +40,8 @@ import {
   collection, getDocs, doc, orderBy, limit, query, startAfter, getDoc, startAt,
 } from 'firebase/firestore';
 import { db } from '@/includes/firebase';
-import SongItem from '../components/SongItem.vue';
 import WaveLoader from '@/components/WaveLoader.vue';
+import SongItem from '../components/SongItem.vue';
 
 export default {
   name: 'HomeView',
@@ -92,7 +92,7 @@ export default {
         snapshots = await getDocs(q);
       }
       if (snapshots) {
-        this.loading = false
+        this.loading = false;
       }
       snapshots.forEach((doc) => {
         this.songs.push({

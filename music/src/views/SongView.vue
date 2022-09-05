@@ -110,7 +110,7 @@ export default {
         this.song.comment_count += 1;
         await updateDoc(doc(db, 'songs', this.$route.params.id), {
           comment_count: increment(1),
-        })
+        });
 
         this.getComments();
 
@@ -122,7 +122,7 @@ export default {
       });
     },
     async getComments() {
-      this.comments = []
+      this.comments = [];
       const q = query(commentsCollection, where('sid', '==', this.$route.params.id));
 
       const snapshot = await getDocs(q);
@@ -158,7 +158,7 @@ export default {
     }
 
     const { sort } = this.$route.query;
-    this.sort = sort === '1' || sort === '2' ? sort: '1';
+    this.sort = sort === '1' || sort === '2' ? sort : '1';
 
     this.song = docSnapshot.data();
 
@@ -173,10 +173,10 @@ export default {
       this.$router.push({
         query: {
           sort: newVal,
-        }
-      })
-    }
-  }
+        },
+      });
+    },
+  },
 };
 </script>
 

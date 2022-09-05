@@ -106,7 +106,7 @@ export default {
               url: '',
             };
 
-            getDownloadURL(ref(storage, `songs/${file.name}`)).then( async (downloadURL) => {
+            getDownloadURL(ref(storage, `songs/${file.name}`)).then(async (downloadURL) => {
               song.url = downloadURL;
 
               await addDoc(collection(db, 'songs'), song);

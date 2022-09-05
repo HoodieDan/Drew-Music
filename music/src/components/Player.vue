@@ -15,19 +15,20 @@
       </div>
       <!-- Scrub -->
       <div class="song-container float-left w-7 h-7 leading-3 ml-7 mt-2 player-scrub">
-        <div class="song absolute left-0 right-0 text-lg text-center mx-auto player-song-info text-blue-600">
-          <span class="song-title text-white">Song Title</span> by
-          <span class="song-artist text-white">Artist</span>
+        <div class="song absolute left-0 right-0 text-lg text-center mx-auto player-song-info text-blue-600"
+        v-if="currentSong.modified_name">
+          <span class="song-title text-white">{{ currentSong.modified_name }}</span> by
+          <span class="song-artist text-white">{{ currentSong.display_name }}</span>
         </div>
         <!-- Scrub Container  -->
         <span class="block w-full h-2 rounded m-1 mt-2 bg-gray-200 relative cursor-pointer">
           <!-- Player Ball -->
-          <span class="absolute top-neg-8  text-white text-lg" style="left: 50%;">
+          <span class="absolute top-neg-8  text-white text-lg" :style="{ left: songPosition - 1 +'%' }">
             <i class="fas fa-circle"></i>
           </span>
           <!-- Player Progress Bar-->
           <span class="block h-2 rounded bg-gradient-to-r bg-blue-600"
-            style="width: 50%;"></span>
+            :style="{ width: songPosition +'%' }"></span>
         </span>
       </div>
       <!-- Duration -->
@@ -40,14 +41,15 @@
 
 <script>
 import { mapActions, mapGetters, mapState } from 'vuex';
+
 export default {
   name: 'Player',
   methods: {
-    ...mapActions(['toggleAudio'])
+    ...mapActions(['toggleAudio']),
   },
   computed: {
     ...mapGetters(['playing']),
-    ...mapState(['seek', 'duration', 'song'])
-  }
+    ...mapState(['seek', 'duration', 'currentSong', 'songPosition']),
+  },
 };
 </script>

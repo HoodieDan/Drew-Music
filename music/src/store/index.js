@@ -4,7 +4,7 @@ import {
 } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
 import { db } from '@/includes/firebase';
-import { Howl } from 'howler';
+import { Howl, } from 'howler';
 import helper from '@/includes/helper';
 
 const auth = getAuth();
@@ -18,6 +18,7 @@ export default createStore({
     sound: {},
     seek: '00:00',
     duration: '00:00',
+    songPosition: 0,
   },
   mutations: {
     toggleAuthModal: (state) => {
@@ -39,7 +40,8 @@ export default createStore({
     updatePosition(state) {
       state.seek = helper.formatTime(state.sound.seek());
       state.duration = helper.formatTime(state.sound.duration());
-    }
+      state.songPosition = (state.sound.seek() / state.sound.duration()) * 100
+    },
   },
   getters: {
     // authModalShow: (state) => state.authModalShow,
@@ -49,7 +51,7 @@ export default createStore({
       }
 
       return false;
-    }
+    },
   },
   actions: {
     async register({ commit }, payload) {
@@ -100,6 +102,9 @@ export default createStore({
       }
     },
     async newSong({ commit, state, dispatch }, payload) {
+      if (state.sound instanceof Howl) {
+        state.sound.unload()
+      }
       commit('newSong', payload);
 
       state.sound.play();
@@ -108,7 +113,7 @@ export default createStore({
         requestAnimationFrame(() => {
           dispatch('progress');
         });
-      })
+      });
     },
     async toggleAudio({ state }) {
       if (!state.sound.playing) {
@@ -121,13 +126,13 @@ export default createStore({
         state.sound.play();
       }
     },
-    progress ({ commit, state, dispatch }) {
+    progress({ commit, state, dispatch }) {
       commit('updatePosition');
 
       if (state.sound.playing()) {
         requestAnimationFrame(() => {
-          dispatch('progress')
-        })
+          dispatch('progress');
+        });
       }
     },
   },
