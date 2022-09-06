@@ -21,7 +21,8 @@
           <span class="song-artist text-white">{{ currentSong.display_name }}</span>
         </div>
         <!-- Scrub Container  -->
-        <span class="block w-full h-2 rounded m-1 mt-2 bg-gray-200 relative cursor-pointer">
+        <span class="block w-full h-2 rounded m-1 mt-2 bg-gray-200 relative cursor-pointer"
+        @click.prevent="updateSeek">
           <!-- Player Ball -->
           <span class="absolute top-neg-8  text-white text-lg" :style="{ left: songPosition - 1 +'%' }">
             <i class="fas fa-circle"></i>
@@ -45,7 +46,7 @@ import { mapActions, mapGetters, mapState } from 'vuex';
 export default {
   name: 'Player',
   methods: {
-    ...mapActions(['toggleAudio']),
+    ...mapActions(['toggleAudio', 'updateSeek']),
   },
   computed: {
     ...mapGetters(['playing']),
