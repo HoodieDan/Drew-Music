@@ -7,11 +7,14 @@
         <div class="text-white main-header-content">
           <h1 class="font-bold text-5xl mb-5 head-font">Listen to Great Music!</h1>
           <p class="w-full md:w-8/12 mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Drew Music is a music web application where you can upload,
+            listen to and share your favourite songs with all your friends.
+            Enjoy and make sure you share with your friends!
+            <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Phasellus et dolor mollis, congue augue non, venenatis elit.
             Nunc justo eros, suscipit ac aliquet imperdiet, venenatis et
             sapien. Duis sed magna pulvinar, fringilla lorem eget,
-            ullamcorper urna.
+            ullamcorper urna. -->
           </p>
         </div>
       </div>
