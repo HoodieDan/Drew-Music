@@ -42,7 +42,7 @@
 
 <script>
 import {
-  collection, getDocs, doc, orderBy, limit, query, startAfter, getDoc, startAt,
+  collection, getDocs, doc, orderBy, limit, query, startAfter, getDoc,
 } from 'firebase/firestore';
 import { db } from '@/includes/firebase';
 import WaveLoader from '@/components/WaveLoader.vue';
@@ -74,14 +74,12 @@ export default {
 
       this.pendingRequest = true;
       let snapshots;
-      let lastDocument;
       if (this.songs.length) {
         const last = doc(db, 'songs', this.songs[this.songs.length - 1].docID);
         const lastDocument = await getDoc(last);
         const q = query(
           collection(db, 'songs'),
           orderBy('modified_name'),
-          // startAt(lastDocument),
           startAfter(lastDocument),
           limit(this.maxPerPage),
         );

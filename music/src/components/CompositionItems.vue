@@ -107,9 +107,9 @@ export default {
         const q = query(collection(db, 'songs'), where('uid', '==', user.uid));
 
         const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
+        querySnapshot.forEach((document) => {
           // doc.data() is never undefined for query doc snapshots
-          this.userSongs.push({ id: doc.id, ...doc.data() });
+          this.userSongs.push({ id: document.id, ...document.data() });
         });
         console.log(this.userSongs);
       });

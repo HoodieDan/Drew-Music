@@ -1248,6 +1248,18 @@
     selenium-webdriver "4.1.2"
     tslib "^2.1.0"
 
+"@firebase/auth@^0.20.6":
+  version "0.20.6"
+  resolved "https://registry.yarnpkg.com/@firebase/auth/-/auth-0.20.6.tgz#cfdf97dd9d7768a9ab15405b37750c7af8b158e8"
+  integrity sha512-99R3bY7aQ2zFh5BdqLEgI/qN87l3bPBLIse2eDVcSRwChaM6FTdIKoKk15L1M4ry8utatMtYFt1vRCol7QDsLg==
+  dependencies:
+    "@firebase/component" "0.5.17"
+    "@firebase/logger" "0.3.3"
+    "@firebase/util" "1.6.3"
+    node-fetch "2.6.7"
+    selenium-webdriver "4.1.2"
+    tslib "^2.1.0"
+
 "@firebase/component@0.5.17":
   version "0.5.17"
   resolved "https://registry.yarnpkg.com/@firebase/component/-/component-0.5.17.tgz#89291f378714df05d44430c524708669380d8ea6"
