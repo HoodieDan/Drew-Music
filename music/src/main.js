@@ -4,7 +4,7 @@ import router from './router';
 import store from './store';
 import VeeValidatePlugin from './includes/Validation';
 import './includes/firebase';
-import Icon from './directives/icon'
+import Icon from './directives/icon';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import './assets/main.css';
 

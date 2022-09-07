@@ -4,7 +4,7 @@ import {
 } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
 import { db } from '@/includes/firebase';
-import { Howl, } from 'howler';
+import { Howl } from 'howler';
 import helper from '@/includes/helper';
 
 const auth = getAuth();
@@ -40,7 +40,7 @@ export default createStore({
     updatePosition(state) {
       state.seek = helper.formatTime(state.sound.seek());
       state.duration = helper.formatTime(state.sound.duration());
-      state.songPosition = (state.sound.seek() / state.sound.duration()) * 100
+      state.songPosition = (state.sound.seek() / state.sound.duration()) * 100;
     },
   },
   getters: {
@@ -103,7 +103,7 @@ export default createStore({
     },
     async newSong({ commit, state, dispatch }, payload) {
       if (state.sound instanceof Howl) {
-        state.sound.unload()
+        state.sound.unload();
       }
       commit('newSong', payload);
 
@@ -140,7 +140,7 @@ export default createStore({
         return;
       }
 
-      const { x, width }  = payload.currentTarget.getBoundingClientRect();
+      const { x, width } = payload.currentTarget.getBoundingClientRect();
       const clickX = payload.clientX - x;
       const percentage = clickX / width;
       const seconds = state.sound.duration() * percentage;
@@ -149,7 +149,7 @@ export default createStore({
 
       state.sound.once('seek', () => {
         dispatch('progress');
-      })
-    }
+      });
+    },
   },
 });

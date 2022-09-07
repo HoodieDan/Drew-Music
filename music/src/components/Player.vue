@@ -15,7 +15,7 @@
       </div>
       <!-- Scrub -->
       <div class="float-left w-7 h-7 leading-3 ml-7 mt-2 player-scrub">
-        <div class="song-container absolute left-0 right-0 text-lg text-center mx-auto player-song-info text-blue-600"
+        <div class="absolute left-0 right-0 text-lg text-center mx-auto player-song-info text-blue-600"
         v-if="currentSong.modified_name">
           <span class="song-title text-white">{{ currentSong.modified_name }}</span> uploaded by
           <span class="song-artist text-white">{{ currentSong.display_name }}</span>
@@ -56,11 +56,11 @@ export default {
 </script>
 
 <style scoped>
-.song-container{
+/* .song-container{
   overflow-x: initial !important;
   overflow-y: hidden;
-}
-.song {
-  /* overflow-x: auto; */
-}
+} */
+/* .song {
+  overflow-x: auto;
+} */
 </style>

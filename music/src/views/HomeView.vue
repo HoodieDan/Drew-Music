@@ -26,7 +26,7 @@
         <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200" v-icon>
           <span class="card-title text-blue-600">Songs</span>
           <!-- Icon -->
-          
+
         </div>
         <!-- Playlist -->
         <ol id="playlist">
