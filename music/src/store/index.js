@@ -1,6 +1,6 @@
 import { createStore } from 'vuex';
 import {
-  getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut, onAuthStateChanged,
+  getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, onAuthStateChanged,
 } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
 import { db } from '@/includes/firebase';
@@ -8,7 +8,6 @@ import { Howl } from 'howler';
 import helper from '@/includes/helper';
 
 const auth = getAuth();
-const user = auth.currentUser;
 
 export default createStore({
   state: {

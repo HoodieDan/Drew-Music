@@ -20,7 +20,8 @@
             @drop.prevent.stop="upload($event)">
             <h5>Drop your files here</h5>
         </div>
-        <input type="file" multiple @change="upload($event)" />
+        <label for="file">Music Upload</label>
+        <input name="file" type="file" multiple @change="upload($event)" />
         <hr class="my-6" />
         <!-- Progess Bars -->
         <div class="mb-4" v-for="upload in uploads" :key="upload.name">
@@ -47,7 +48,7 @@ import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 
 export default {
-  name: 'Upload',
+  name: 'UploadFiles',
   data() {
     return {
       isDraggedOver: false,

@@ -2,10 +2,12 @@
     <div class="border border-gray-200 p-3 mb-4 rounded">
         <div v-show="!showForm">
             <h4 class="inline-block text-2xl font-bold w-80">{{ song.modified_name }}</h4>
-            <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-red-600 float-right" @click="deleteSong(song)">
+            <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-red-600 float-right"
+              @click="deleteSong(song)">
                 <i class="fa fa-times"></i>
             </button>
-            <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-blue-600 float-right" @click="edit()">
+            <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-blue-600 float-right"
+              @click="edit()">
                 <i class="fa fa-pencil-alt"></i>
             </button>
         </div>
@@ -18,13 +20,14 @@
             </div>
             <vee-form @submit="updateSong" :validation-schema="schema" :initial-values="song">
                 <div class="mb-3">
-                    <label class="inline-block mb-2">Song Title</label>
+                    <label class="inline-block mb-2" for="song_name">Song Title:</label>
                     <vee-field type="text"
                         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
                         transition duration-500 focus:outline-none focus:border-black rounded"
                         placeholder="Enter Song Title"
-                        v-model="song.modified_name"
+                        v-model="form.modified_name"
                         @input="updateUnsavedFlag(true)"
+                        id="song_name"
                         name="song_name" />
                     <ErrorMessage class="text-red-600" name="song_name" />
                 </div>
@@ -34,7 +37,7 @@
                         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
                         transition duration-500 focus:outline-none focus:border-black rounded"
                         placeholder="Enter Genre"
-                        v-model="song.genre"
+                        v-model="form.genre"
                         @input="updateUnsavedFlag(true)"
                         name="song_genre" />
                     <ErrorMessage class="text-red-600" name="song_genre" />
@@ -90,6 +93,10 @@ export default {
       schema: {
         song_name: 'required',
         song_genre: 'required|alpha_spaces',
+      },
+      form: {
+        modified_name: this.song.modified_name,
+        genre: this.song.genre,
       },
       showForm: false,
       songInfo: {},

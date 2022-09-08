@@ -1,6 +1,12 @@
 export default {
-  beforeMount(el) {
+  beforeMount(el, binding) {
+    let iconClass = `fa fa-${binding.value} float-right text-green-400 text-xl`;
+
+    if (binding.arg === 'full') {
+      iconClass = binding.value;
+    }
+
     // eslint-disable-next-line no-param-reassign
-    el.innerHTML += '<i class="fa fa-headphones-alt float-right text-green-400 text-xl"></i>';
+    el.innerHTML += `<i class="${iconClass}"></i>`;
   },
 };

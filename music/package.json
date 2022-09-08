@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@firebase/auth": "^0.20.6",
+    "@firebase/firestore": "^3.4.15",
     "@vee-validate/rules": "^4.5.11",
     "autoprefixer": "^10.4.8",
     "core-js": "^3.25.1",
@@ -21,6 +22,7 @@
     "vee-validate": "^4.6.7",
     "vue": "^3.2.37",
     "vue-router": "^4.1.1",
+    "vue-template-compiler": "^2.7.10",
     "vuex": "^4.0.0"
   },
   "devDependencies": {

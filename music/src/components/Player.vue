@@ -15,17 +15,21 @@
       </div>
       <!-- Scrub -->
       <div class="float-left w-7 h-7 leading-3 ml-7 mt-2 player-scrub">
-        <div class="absolute left-0 right-0 text-lg text-center mx-auto player-song-info text-blue-600"
-        v-if="currentSong.modified_name">
-          <span class="song-title text-white">{{ currentSong.modified_name }}</span> uploaded by
-          <span class="song-artist text-white">{{ currentSong.display_name }}</span>
+        <div
+          class="absolute left-0 right-0 text-lg text-center mx-auto player-song-info text-blue-600"
+          v-if="currentSong.modified_name">
+            <span class="song-title text-white">{{ currentSong.modified_name }}</span> uploaded by
+            <span class="song-artist text-white">{{ currentSong.display_name }}</span>
         </div>
         <!-- Scrub Container  -->
-        <span class="block w-full h-2 rounded m-1 mt-2 bg-gray-200 relative cursor-pointer"
-        @click.prevent="updateSeek">
+        <span
+          class="block w-full h-2 rounded m-1 mt-2 bg-gray-200 relative cursor-pointer"
+          @click.prevent="updateSeek">
           <!-- Player Ball -->
-          <span class="absolute top-neg-8  text-white text-lg" :style="{ left: songPosition - 1 +'%' }">
-            <i class="fas fa-circle"></i>
+          <span
+            class="absolute top-neg-8  text-white text-lg"
+            :style="{ left: songPosition - 1 +'%' }">
+              <i class="fas fa-circle"></i>
           </span>
           <!-- Player Progress Bar-->
           <span class="block h-2 rounded bg-gradient-to-r bg-blue-600"
@@ -44,7 +48,15 @@
 import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
-  name: 'Player',
+  name: 'PlayerComponent',
+  mounted() {
+    // window.addEventListener("keydown", (event) => {
+    //   console.log(event);
+    //   if (event.key === '') {
+    //     this.toggleAudio;
+    //   }
+    // });
+  },
   methods: {
     ...mapActions(['toggleAudio', 'updateSeek']),
   },

@@ -41,6 +41,7 @@
             </button>
           </vee-form>
           <!-- Sort Comments -->
+          <label for="sort">Sort comments from:</label>
           <select v-model="sort"
             class="block mt-4 py-1.5 px-3 text-gray-800 border border-gray-300 transition
             duration-500 focus:outline-none focus:border-black rounded">
@@ -130,10 +131,10 @@ export default {
       const snapshot = await getDocs(q);
 
       this.comment = [];
-      snapshot.forEach((doc) => {
+      snapshot.forEach((document) => {
         this.comments.push({
-          docID: doc.id,
-          ...doc.data(),
+          docID: document.id,
+          ...document.data(),
         });
       });
     },

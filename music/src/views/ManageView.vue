@@ -39,7 +39,7 @@ import { db } from '@/includes/firebase';
 import CompositionItems from '../components/CompositionItems.vue';
 
 export default {
-  name: 'manage',
+  name: 'ManageView',
   created() {
     this.getSongs();
   },
@@ -63,7 +63,7 @@ export default {
       });
     },
     update(i, values) {
-      this.songs[i].modified_name = values.song_name,
+      this.songs[i].modified_name = values.song_name;
       this.songs[i].genre = values.song_genre;
     },
     removeSong(i) {
