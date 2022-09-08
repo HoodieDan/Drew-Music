@@ -23,7 +23,8 @@
     <!-- Main Content -->
     <section class="container mx-auto main">
       <div class="bg-dark rounded border-gray-200 relative flex flex-col">
-        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200" v-icon="'headphone-alt'">
+        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200"
+        v-icon.right.green="'headphones-alt'">
           <span class="card-title text-blue-600">Songs</span>
           <!-- Icon -->
 
