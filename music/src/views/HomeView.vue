@@ -115,7 +115,6 @@ export default {
 
       if (bottomOfWindow) {
         this.getSongs();
-        console.log('bottom of window');
       }
     },
   },

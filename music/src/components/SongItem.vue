@@ -28,9 +28,14 @@
 <script>
 export default {
   name: 'SongItem',
+  data() {
+    return {
+      event: '',
+    };
+  },
   methods: {
     nav(event) {
-      console.log(event);
+      this.event = event.key;
     },
   },
   props: ['song'],

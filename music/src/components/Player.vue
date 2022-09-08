@@ -53,6 +53,11 @@ import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
   name: 'PlayerComponent',
+  data() {
+    return {
+      seeked: '',
+    };
+  },
   methods: {
     ...mapActions(['toggleAudio', 'updateSeek']),
     pause(event) {
@@ -61,7 +66,7 @@ export default {
       }
     },
     seekOut(event) {
-      console.log(event);
+      this.seeked = event.key;
     },
   },
   computed: {

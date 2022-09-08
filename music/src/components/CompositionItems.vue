@@ -118,7 +118,6 @@ export default {
           // doc.data() is never undefined for query doc snapshots
           this.userSongs.push({ id: document.id, ...document.data() });
         });
-        console.log(this.userSongs);
       });
     },
     edit() {
@@ -131,9 +130,6 @@ export default {
       await deleteObject(songRef).then(async () => {
         await deleteDoc(doc(db, 'songs', song.id));
         this.removeSong(this.index);
-        console.log('song deleted');
-      }).catch((error) => {
-        console.error(error);
       });
     },
     async updateSong(values) {
@@ -149,7 +145,6 @@ export default {
           genre: values.song_genre,
         });
       } catch (error) {
-        console.error(error.code);
         this.in_submission = false;
         this.show_alert = true;
         this.alert_variant = 'bg-red-500';

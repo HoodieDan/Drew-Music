@@ -120,17 +120,13 @@ export default {
         this.reg_in_submission = false;
         this.reg_alert_variant = 'bg-red-500';
 
-        console.error(error);
         const errorCode = error.code;
-        // If it does not work then it might be error.message not error.code
-        console.error(errorCode);
 
         if (errorCode === 'auth/weak-password') {
           this.reg_alert_message = 'The password entered is not strong enough.';
         } else if (errorCode === 'auth/email-already-in-use') {
           this.reg_alert_message = 'The email entered is already in use';
         } else {
-          console.error(error);
           this.reg_alert_message = 'An unexpected error occured. Plese try again later';
         }
         return;

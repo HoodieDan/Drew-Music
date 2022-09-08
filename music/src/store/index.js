@@ -71,11 +71,7 @@ export default createStore({
       onAuthStateChanged(auth, (user) => {
         updateProfile(user, {
           displayName: payload.name,
-        }).then(() => {
-          console.log('Profile Updated');
-        }).catch((error) => {
-          console.log(error.code);
-        });
+        })
       });
 
       commit('toggleAuth');

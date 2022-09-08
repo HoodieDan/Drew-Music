@@ -60,7 +60,6 @@ export default {
         this.login_in_submission = false;
         this.login_alert_variant = 'bg-red-500';
 
-        console.error(error);
         const errorCode = error.code;
 
         if (errorCode === 'auth/invalid-email') {

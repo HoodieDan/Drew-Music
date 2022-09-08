@@ -93,7 +93,6 @@ export default {
           if (error.code === 'storage/unauthorized') {
             this.uploads[uploadIndex].error_message = 'Please upload file less than 10mb.';
           }
-          console.log(error.code);
         }, async () => {
           const auth = getAuth();
           onAuthStateChanged(auth, (user) => {
@@ -112,8 +111,6 @@ export default {
 
               await addDoc(collection(db, 'songs'), song);
             });
-            console.log(song);
-            // console.log(user)
             this.addSong();
           });
 
