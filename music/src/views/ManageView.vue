@@ -83,6 +83,7 @@ export default {
       this.$refs.upload.cancelUploads();
       next();
     } else {
+      // eslint-disable-next-line
       const leave = confirm('You have unsaved changes. Are you sure you want to leave?');
       next(leave);
     }

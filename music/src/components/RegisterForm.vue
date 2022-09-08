@@ -7,6 +7,7 @@
     </div>
     <!-- Name -->
     <div class="mb-3">
+      // eslint-disable-next-line
         <label for="name" class="inline-block mb-2">Name</label>
         <vee-field as="input" type="text" name="name"
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition

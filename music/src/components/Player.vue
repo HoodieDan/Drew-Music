@@ -4,7 +4,10 @@
     <div class="relative">
       <!-- Play/Pause Button -->
       <div class="float-left w-7 h-7 leading-3">
-        <button type="button" @click.prevent="toggleAudio" class="w-full h-full">
+        <button type="button"
+          @click.prevent="toggleAudio"
+          class="w-full h-full"
+          @keydown="pause()">
           <i class="fa text-white-500 text-xl"
           :class="{ 'fa-play': !playing, 'fa-pause': 'playing' }"></i>
         </button>
@@ -24,7 +27,8 @@
         <!-- Scrub Container  -->
         <span
           class="block w-full h-2 rounded m-1 mt-2 bg-gray-200 relative cursor-pointer"
-          @click.prevent="updateSeek">
+          @click.prevent="updateSeek"
+          @keydown="seekOut">
           <!-- Player Ball -->
           <span
             class="absolute top-neg-8  text-white text-lg"
@@ -49,16 +53,16 @@ import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
   name: 'PlayerComponent',
-  mounted() {
-    // window.addEventListener("keydown", (event) => {
-    //   console.log(event);
-    //   if (event.key === '') {
-    //     this.toggleAudio;
-    //   }
-    // });
-  },
   methods: {
     ...mapActions(['toggleAudio', 'updateSeek']),
+    pause(event) {
+      if (event.key === '') {
+        this.toggleAudio();
+      }
+    },
+    seekOut(event) {
+      console.log(event);
+    },
   },
   computed: {
     ...mapGetters(['playing']),

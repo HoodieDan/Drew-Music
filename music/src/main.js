@@ -7,6 +7,7 @@ import VeeValidatePlugin from './includes/Validation';
 import './includes/firebase';
 import Icon from './directives/icon';
 import './assets/main.css';
+import './registerServiceWorker';
 
 const auth = getAuth();
 let app;

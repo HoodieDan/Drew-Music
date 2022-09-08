@@ -15,7 +15,7 @@
       <router-link custom
       :to="{ name: 'song', params: { id: song.docID }, hash: '#comments' }"
       v-slot="{ navigate }">
-        <span class="comments" @click="navigate">
+        <span class="comments" @click="navigate" @keydown="nav">
             <i class="fa fa-comments text-blue-600"></i>
             {{ song.comment_count }}
         </span>
@@ -28,10 +28,10 @@
 <script>
 export default {
   name: 'SongItem',
-  data() {
-    return {
-
-    };
+  methods: {
+    nav(event) {
+      console.log(event);
+    },
   },
   props: ['song'],
 };

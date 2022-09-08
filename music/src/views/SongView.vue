@@ -27,7 +27,8 @@
           <i class="fa fa-comments float-right text-green-400 text-2xl"></i>
         </div>
         <div class="p-6">
-          <div class="text-white text-center font-bold p-4 mb-4" v-if="comment_show_alert" :class="comment_alert_variant">
+          <div class="text-white text-center font-bold p-4 mb-4" v-if="comment_show_alert"
+           :class="comment_alert_variant">
             {{ comment_alert_message }}
           </div>
           <vee-form :validation-schema="schema" @submit="addComment" v-if="userLoggedIn">
@@ -36,7 +37,8 @@
                 duration-500 focus:outline-none focus:border-black rounded mb-4"
               placeholder="Your comment here..."></vee-field>
             <ErrorMessage class="text-red-600" name="comment" />
-            <button type="submit" class="py-1.5 px-3 rounded text-white bg-green-600 block" :disabled="comment_in_submission">
+            <button type="submit" class="py-1.5 px-3 rounded text-white bg-green-600 block"
+             :disabled="comment_in_submission">
               Submit
             </button>
           </vee-form>
@@ -53,7 +55,9 @@
     </section>
     <!-- Comments -->
     <ul class="container mx-auto">
-      <li class="p-6 text-white border border-gray-200" v-for="comment in sortedComments" :key="comment.docID">
+      <li class="p-6 text-white border border-gray-200"
+       v-for="comment in sortedComments"
+        :key="comment.docID">
         <!-- Comment Author -->
         <div class="mb-5">
           <div class="font-bold">{{ comment.name }}</div>
