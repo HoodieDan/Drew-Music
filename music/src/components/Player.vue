@@ -13,7 +13,7 @@
         </button>
       </div>
       <!-- Current Position -->
-      <div class="float-left w-7 h-7 leading-3 text-white-400 mt-0 text-lg w-14 ml-5 mt-1">
+      <div class="float-left w-7 h-7 leading-3 text-white-400 mt-0 text-lg w-14 ml-5 mt-3">
         <span class="player-currenttime text-white">{{ seek }}</span>
       </div>
       <!-- Scrub -->
@@ -40,7 +40,7 @@
         </span>
       </div>
       <!-- Duration -->
-      <div class="float-left w-7 h-7 leading-3  text-white mt-0 text-lg w-14 song-duration mt-1">
+      <div class="float-left w-7 h-7 leading-3  text-white mt-0 text-lg w-14 song-duration mt-3">
         <span class="player-duration">{{ duration }}</span>
       </div>
     </div>

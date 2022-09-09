@@ -47,7 +47,7 @@ a:hover {
 } 
 
 .player-song-info {
-  margin-top: -30px;
+  margin-top: -25px;
 }
 
 .card-header .fa.text-orange,
@@ -124,9 +124,9 @@ input[type="file"]{
   .player-song-info {
     margin-top: -34px;
   }
-  .player-song-info {
+  .song-title {
     /* width: 50%; */
-    animation: slide 50s linear infinite;
+    animation: text-slide 5s linear infinite;
   }
   .drew-music {
     font-size: 1.1rem;
@@ -154,3 +154,11 @@ input[type="file"]{
   }
 }
 
+@keyframes text-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50px);
+  }
+}
