@@ -8,6 +8,7 @@ import './includes/firebase';
 import Icon from './directives/icon';
 import './assets/main.css';
 import './registerServiceWorker';
+import GlobalComponents from './includes/_globals'
 
 const auth = getAuth();
 let app;
@@ -19,6 +20,7 @@ onAuthStateChanged(auth, () => {
     app.use(store);
     app.use(router);
     app.use(VeeValidatePlugin);
+    app.use(GlobalComponents);
     app.directive('icon', Icon);
 
     app.mount('#app');
