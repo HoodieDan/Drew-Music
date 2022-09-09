@@ -21,7 +21,9 @@
         <div
           class="absolute left-0 right-0 text-lg text-center mx-auto player-song-info text-blue-600"
           v-if="currentSong.modified_name">
-            <span class="song-title text-white">{{ currentSong.modified_name }}</span>
+          <div class="c text-center mx-auto">
+            <p class="song-title text-white">{{ currentSong.modified_name }}</p>
+          </div>
         </div>
         <!-- Scrub Container  -->
         <span

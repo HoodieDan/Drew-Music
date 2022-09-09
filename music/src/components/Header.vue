@@ -1,7 +1,7 @@
 <template>
   <!-- Header -->
   <header id="header">
-    <nav class="container mx-auto flex justify-start items-center py-5 px-4">
+    <nav class="container mx-auto flex justify-start py-5 px-4">
       <!-- App Name -->
       <router-link to="/" class="drew-music text-white font-bold text-2xl mr-4 head-font" href="#">
         Drew Music
