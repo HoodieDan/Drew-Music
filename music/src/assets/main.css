@@ -2,6 +2,12 @@ html {
   scroll-behavior: smooth;
   background-color: #060809;
 }
+body::-webkit-scrollbar-track {
+  width: 0.2rem;
+}
+body::-webkit-scrollbar-thumb {
+  width: 0.2rem;
+}
 .abril {
   font-family: "Noto Sans Display", sans-serif;
   letter-spacing: 0.5;
@@ -41,7 +47,7 @@ a:hover {
 } 
 
 .player-song-info {
-  margin-top: -26px;
+  margin-top: -30px;
 }
 
 .card-header .fa.text-orange,
@@ -121,6 +127,12 @@ input[type="file"]{
   .player-song-info {
     /* width: 50%; */
     animation: slide 50s linear infinite;
+  }
+  .drew-music {
+    font-size: 1.1rem;
+  }
+  .nav-link {
+    font-size: 0.8rem;
   }
 }
 

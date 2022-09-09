@@ -29,15 +29,15 @@ export default {
     configure({
       generateMessage: (ctx) => {
         const messages = {
-          required: `The field ${ctx.field} is required`,
-          min: `The field ${ctx.field} is too short`,
-          max: `The field ${ctx.field} is too long`,
-          alpha_spaces: `The field ${ctx.field} may only contain alphabetical and numerical characters`,
-          email: `The field ${ctx.field} must be a valid email`,
-          min_value: `The field ${ctx.field} is too low.`,
-          max_value: `The field ${ctx.field} is too high.`,
-          alpha_num: `The field ${ctx.field} may only contain alphabetical and numerical characters.`,
-          passwords_mismatch: 'The passwords do not match',
+          required: `The field ${ctx.field} is required.`,
+          min: `This ${ctx.field} is too short.`,
+          max: `This ${ctx.field} is too long.`,
+          alpha_spaces: `Your ${ctx.field} may only contain alphabetical and numerical characters.`,
+          email: `This ${ctx.field} must be a valid email.`,
+          min_value: `Your ${ctx.field} is too low.`,
+          max_value: `Your ${ctx.field} is too high.`,
+          alpha_num: `Your ${ctx.field} may only contain alphabetical and numerical characters.`,
+          passwords_mismatch: 'The passwords do not match.',
           country_excluded: 'Due to restrictions, we do not accept users from this location anymore.',
           tos: 'You must accept the terms of service before using this app.',
         };

@@ -12,27 +12,27 @@
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
           <li>
-            <router-link to="/about" class="px-2 text-white"
+            <router-link to="/about" class="px-2 text-white nav-link"
              :class="{ 'text-green': route === 'about' }"
               href="#">
               About
             </router-link>
           </li>
           <li v-if="!userLoggedIn">
-            <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal">
+            <a class="px-2 text-white nav-link" href="#" @click.prevent="toggleAuthModal">
             Login / Register
             </a>
           </li>
           <template v-else>
             <li>
               <router-link to="/manage"
-                class="px-2 text-white" :class="{ 'text-green': route === 'manage' }"
+                class="px-2 text-white nav-link" :class="{ 'text-green': route === 'manage' }"
                 href="#">
                   Manage
               </router-link>
             </li>
             <li>
-              <a class="px-2 text-white" href="#" @click.prevent="signOut">Logout</a>
+              <a class="px-2 text-white nav-link" href="#" @click.prevent="signOut">Logout</a>
             </li>
           </template>
         </ul>
