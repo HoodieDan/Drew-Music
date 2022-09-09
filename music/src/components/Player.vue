@@ -3,7 +3,7 @@
   <div class="bg-dark fixed bottom-0 left-0 bg-white p-5 pb-4 text-left align-top w-full h-16">
     <div class="relative">
       <!-- Play/Pause Button -->
-      <div class="float-left w-7 h-7 leading-3">
+      <div class="float-left w-10 h-10 leading-3">
         <button type="button"
           @click.prevent="toggleAudio"
           class="w-full h-full"
