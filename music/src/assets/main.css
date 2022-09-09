@@ -41,7 +41,7 @@ a:hover {
 } 
 
 .player-song-info {
-  margin-top: -24px;
+  margin-top: -26px;
 }
 
 .card-header .fa.text-orange,
@@ -58,8 +58,8 @@ section.main-header-content {
 }
 
 .introduction-bg {
-  animation: slid 50s linear infinite;
-  background-image: url('./img/header-3.jpg');
+  animation: slide 50s linear infinite;
+  background-image: url('https://media.istockphoto.com/photos/close-up-horizontal-banner-of-laughing-girl-wearing-neon-green-top-picture-id1247694547?k=20&m=1247694547&s=612x612&w=0&h=5t-CmYaJhjb7qwo6GJZzrctVxitSKEfqG6i83bvH0_8=');
   will-change: background-position;
   z-index: -1;
 }
@@ -112,6 +112,9 @@ input[type="file"]{
 }
 
 @media (max-width: 400px) {
+  .introduction-bg {
+    background-image: url('../assets/img/header-1.jpg');
+  }
   .player-song-info {
     margin-top: -34px;
   }
