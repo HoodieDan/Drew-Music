@@ -37,13 +37,13 @@
                 duration-500 focus:outline-none focus:border-black rounded mb-4"
               placeholder="Your comment here..."></vee-field>
             <ErrorMessage class="text-red-600" name="comment" />
-            <button type="submit" class="py-1.5 px-3 rounded text-white bg-green-600 block"
+            <button type="submit" class="py-1.5 px-3 rounded text-white bg-green-600 block mb-4"
              :disabled="comment_in_submission">
               Submit
             </button>
           </vee-form>
           <!-- Sort Comments -->
-          <label for="sort mt-4">Sort comments from:</label>
+          <label for="sort">Sort comments from:</label>
           <select v-model="sort"
             class="block mt-4 py-1.5 px-3 text-gray-800 border border-gray-300 transition
             duration-500 focus:outline-none focus:border-black rounded">
@@ -157,21 +157,24 @@ export default {
       });
     },
   },
-  async created() {
-    const docRef = doc(db, 'songs', this.$route.params.id);
+  async beforeRouteEnter(to, from, next) {
+    const docRef = doc(db, 'songs', to.params.id);
     const docSnapshot = await getDoc(docRef);
 
-    if (!docSnapshot.exists()) {
-      this.$router.push({ name: 'home' });
-      return;
-    }
+    next((vm) => {
+      if (!docSnapshot.exists()) {
+        vm.$router.push({ name: 'home' });
+        return;
+      }
 
-    const { sort } = this.$route.query;
-    this.sort = sort === '1' || sort === '2' ? sort : '1';
+      const { sort } = vm.$route.query;
+      vm.sort = sort === '1' || sort === '2' ? sort : '1';
 
-    this.song = docSnapshot.data();
+      vm.song = docSnapshot.data();
 
-    this.getComments();
+      vm.getComments();
+    });
+
   },
   watch: {
     sort(newVal) {
