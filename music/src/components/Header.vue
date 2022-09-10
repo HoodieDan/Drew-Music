@@ -60,7 +60,9 @@ export default {
     },
   },
   computed: {
-    ...mapState(['userLoggedIn']),
+    ...mapState({
+      userLoggedIn: (state) => state.auth.userLoggedIn,
+    }),
     route() {
       return this.$route.name;
     },

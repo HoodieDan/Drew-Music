@@ -75,7 +75,12 @@ export default {
   },
   computed: {
     ...mapGetters(['playing']),
-    ...mapState(['seek', 'duration', 'currentSong', 'songPosition']),
+    ...mapState({
+      seek: (state) => state.player.seek,
+      duration: (state) => state.player.duration,
+      currentSong: (state) => state.player.currentSong,
+      songPosition: (state) => state.player.songPosition,
+    }),
   },
 };
 </script>

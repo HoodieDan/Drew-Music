@@ -24,7 +24,9 @@ export default {
     Player,
   },
   computed: {
-    ...mapState(['userLoggedIn']),
+    ...mapState({
+      userLoggedIn: (state) => state.auth.userLoggedIn,
+    }),
   },
   mounted() {
     const auth = getAuth();
