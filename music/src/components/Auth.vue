@@ -30,14 +30,14 @@
           <ul class="flex flex-wrap mb-4">
             <li class="flex-auto text-center">
               <a class="block rounded py-3 px-4 transition"
-              :class="{ 'hover:text-white text-white bg-blue-600': tab ==='login',
+              :class="{ 'text-white bg-blue-600': tab ==='login',
               'hover:green': tab === 'register' }"
               @click.prevent="tab = 'login'"
               href="#">Login</a>
             </li>
             <li class="flex-auto text-center">
               <a class="block rounded py-3 px-4 transition"
-              :class="{ 'hover:text-white text-white bg-blue-600': tab === 'register',
+              :class="{ 'text-white bg-blue-600': tab === 'register',
               'hover:green': tab === 'login' }"
               @click.prevent="tab = 'register'"
                 href="#">Register</a>
@@ -84,6 +84,9 @@ export default {
 <style>
 .bg-blue-600 {
   background-color: #0bce5a;
+}
+.bg-blue-600.text-white:hover {
+  color: #060809 !important;
 }
 .green {
   color: #0bce5a !important;

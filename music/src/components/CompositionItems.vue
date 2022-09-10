@@ -43,7 +43,7 @@
                     <ErrorMessage class="text-red-600" name="song_genre" />
                 </div>
                 <button type="submit"
-                class="py-1.5 px-3 rounded text-white bg-green-600"
+                class="py-1.5 px-3 rounded text-white bg-green-600 space-right"
                 :disabled="in_submission">
                     Submit
                 </button>
@@ -166,5 +166,7 @@ export default {
 </script>
 
 <style>
-
+.space-right {
+  margin-right: 1rem;
+}
 </style>

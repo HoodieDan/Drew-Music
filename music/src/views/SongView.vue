@@ -43,7 +43,7 @@
             </button>
           </vee-form>
           <!-- Sort Comments -->
-          <label for="sort">Sort comments from:</label>
+          <label for="sort mt-4">Sort comments from:</label>
           <select v-model="sort"
             class="block mt-4 py-1.5 px-3 text-gray-800 border border-gray-300 transition
             duration-500 focus:outline-none focus:border-black rounded">
@@ -64,7 +64,7 @@
           <time>{{ comment.datePosted }}</time>
         </div>
 
-        <p>-{{ comment.content }}</p>
+        <p>- {{ comment.content }}</p>
       </li>
     </ul>
   </main>

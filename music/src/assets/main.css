@@ -2,11 +2,19 @@ html {
   scroll-behavior: smooth;
   background-color: #060809;
 }
-body::-webkit-scrollbar-track {
+body::-webkit-scrollbar {
   width: 0.2rem;
 }
 body::-webkit-scrollbar-thumb {
   width: 0.2rem;
+}
+button {
+  border: 1px solid #FFF;
+  transition: all 0.5s;
+}
+button:hover {
+  background-color: #FFF;
+  color: #060809 !important;
 }
 .abril {
   font-family: "Noto Sans Display", sans-serif;

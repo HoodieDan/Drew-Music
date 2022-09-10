@@ -68,6 +68,7 @@ export default {
           return;
         }
 
+        // handle uploads if user is offline
         if (!navigator.onLine) {
           this.uploads.push({
             task: {},

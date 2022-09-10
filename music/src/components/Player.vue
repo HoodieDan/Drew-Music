@@ -86,11 +86,10 @@ export default {
 </script>
 
 <style scoped>
-/* .song-container{
-  overflow-x: initial !important;
-  overflow-y: hidden;
-} */
-/* .song {
-  overflow-x: auto;
-} */
+button {
+  border: none;
+}
+button:hover {
+  background-color: #060809;
+}
 </style>
