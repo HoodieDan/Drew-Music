@@ -9,6 +9,10 @@ import Icon from './directives/icon';
 import './assets/main.css';
 import './registerServiceWorker';
 import GlobalComponents from './includes/_globals'
+import progressBar from './includes/progress-bar';
+import 'nprogress/nprogress.css'
+
+progressBar(router);
 
 const auth = getAuth();
 let app;

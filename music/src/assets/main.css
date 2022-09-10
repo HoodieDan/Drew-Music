@@ -16,6 +16,9 @@ button:hover {
   background-color: #FFF;
   color: #060809 !important;
 }
+#nprogress .bar {
+  background: #0bce5a !important;
+}
 .abril {
   font-family: "Noto Sans Display", sans-serif;
   letter-spacing: 0.5;
