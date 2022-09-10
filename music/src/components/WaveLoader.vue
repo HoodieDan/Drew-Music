@@ -42,7 +42,7 @@ div.loader-container {
 
 #loader span {
   display: block;
-  width: 0.5rem;
+  width: 0.2rem;
   height: 0.3rem;
   background: #0bce5a;
   animation: loader 1.5s ease-in-out infinite;
@@ -105,6 +105,6 @@ div.loader-container {
 }
 
 @keyframes loader {
-    100% { height: 4rem; }
+    100% { height: 2rem; }
 }
 </style>
