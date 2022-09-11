@@ -4,12 +4,12 @@ import { collection, getFirestore, enableIndexedDbPersistence } from 'firebase/f
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: process.env.DREW_MUSIC_API_KEY,
-  authDomain: process.env.DREW_MUSIC_AUTH_DOMAIN,
-  projectId: process.env.DREW_MUSIC_PROJECT_ID,
-  storageBucket: process.env.DREW_MUSIC_STORAGE_BUCKET,
-  messagingSenderId: process.env.DREW_MUSIC_MESSAGING_SENDER_ID,
-  appId: process.env.DREW_MUSIC_APP_ID,
+  apiKey: 'AIzaSyAVl-DPNXYgeoGENCRTUhLk5eqoBzMlqBw',
+  authDomain: 'music-4d30a.firebaseapp.com',
+  projectId: 'music-4d30a',
+  storageBucket: 'music-4d30a.appspot.com',
+  messagingSenderId: '323173063008',
+  appId: '1:323173063008:web:5f705d87eaf4e4cd502605',
 };
 
 // Initialize Firebase
