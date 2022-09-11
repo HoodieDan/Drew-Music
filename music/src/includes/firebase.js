@@ -4,12 +4,12 @@ import { collection, getFirestore, enableIndexedDbPersistence } from 'firebase/f
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAVl-DPNXYgeoGENCRTUhLk5eqoBzMlqBw',
-  authDomain: 'music-4d30a.firebaseapp.com',
-  projectId: 'music-4d30a',
-  storageBucket: 'music-4d30a.appspot.com',
-  messagingSenderId: '323173063008',
-  appId: '1:323173063008:web:5f705d87eaf4e4cd502605',
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_APP_ID,
 };
 
 // Initialize Firebase
