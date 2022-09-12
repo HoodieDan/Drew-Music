@@ -10,11 +10,6 @@
             Drew Music is a music web application where you can upload,
             listen to and share your favourite songs with all your friends.
             Enjoy and make sure you share with your friends!
-            <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus et dolor mollis, congue augue non, venenatis elit.
-            Nunc justo eros, suscipit ac aliquet imperdiet, venenatis et
-            sapien. Duis sed magna pulvinar, fringilla lorem eget,
-            ullamcorper urna. -->
           </p>
         </div>
       </div>
@@ -68,6 +63,7 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    // get songs from the database in alphabetical order
     async getSongs() {
       if (this.pendingRequest) {
         return;
@@ -108,6 +104,7 @@ export default {
       // console.log(lastDocument)
       this.pendingRequest = false;
     },
+    // function to handle infinite scroll
     handleScroll() {
       const { scrollTop, offsetHeight } = document.documentElement;
       const { innerHeight } = window;
